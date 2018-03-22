@@ -9,5 +9,7 @@ export default function toString(obj) {
     do {
         result = result.replace('\"~--demo--~', '').replace('~--demo--~\"', '').replace(/\\n/g, '').replace(/\\\"/g,"\"");//最后一个replace将release模式中莫名生成的\"转换成"
     } while (result.indexOf('~--demo--~') >= 0);
+    //用/v/n來換行
+    result = result.replace(/\\v/g, '')
     return result;
 }
