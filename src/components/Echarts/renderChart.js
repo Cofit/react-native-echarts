@@ -1,5 +1,6 @@
 import echarts from './echarts.min';
 import toString from '../../util/toString';
+import { Platform } from 'react-native';
 
 export default function renderChart(props) {
   const height = `${props.height || 400}px`;
@@ -7,6 +8,17 @@ export default function renderChart(props) {
   return `
     document.getElementById('main').style.height = "${height}";
     document.getElementById('main').style.width = "${width}";
+    document.body.addEventListener('touchmove', function(event) {
+      if('${Platform.OS}' === 'android'){
+        window.postMessage('{ "type":"move"}')
+      }
+
+    }, false);
+    document.body.addEventListener('touchend', function(event) {
+      if('${Platform.OS}' === 'android'){
+        window.postMessage('{ "type":"end"}')
+      }
+    }, false);
     var myChart = echarts.init(document.getElementById('main'));
     myChart.setOption(${toString(props.option)});
     window.document.addEventListener('message', function(e) {

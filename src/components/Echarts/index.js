@@ -9,10 +9,9 @@ export default class App extends Component {
     super(props);
     this.setNewOption = this.setNewOption.bind(this);
   }
-  
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.option !== this.props.option) {
+    if (nextProps.option !== this.props.option) {
       this.refs.chart.reload();
     }
   }
@@ -23,11 +22,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, height: this.props.height || 400,}}>
+      <View style={{ flex: 1, height: this.props.height || 400, }}>
         <WebView
           ref="chart"
-          scrollEnabled = {false}
-          injectedJavaScript = {renderChart(this.props)}
+          scrollEnabled={false}
+          bounces={false}
+          injectedJavaScript={renderChart(this.props)}
           style={{
             height: this.props.height || 400,
             backgroundColor: this.props.backgroundColor || 'transparent'
