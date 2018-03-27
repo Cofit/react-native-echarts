@@ -12,12 +12,14 @@ export default function renderChart(props) {
       if('${Platform.OS}' === 'android'){
         window.postMessage('{ "type":"move"}')
       }
-
     }, false);
     document.body.addEventListener('touchend', function(event) {
       if('${Platform.OS}' === 'android'){
         window.postMessage('{ "type":"end"}')
       }
+      let option = echarts.init(document.getElementById('main')).getOption();
+      option = JSON.stringify(option)
+      window.postMessage('{ "type":"option" , "option":'+option+' }')
     }, false);
     var myChart = echarts.init(document.getElementById('main'));
     myChart.setOption(${toString(props.option)});
