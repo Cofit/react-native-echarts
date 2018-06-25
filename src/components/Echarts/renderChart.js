@@ -14,7 +14,7 @@ export default function renderChart(props) {
       }
     }, false);
     document.body.addEventListener('touchend', function(event) {
-      let option = echarts.init(document.getElementById('main')).getOption();
+      var option = echarts.init(document.getElementById('main')).getOption();
       option = JSON.stringify(option);
       window.postMessage('{ "type":"option" , "option":'+option+' }');
     }, false);
