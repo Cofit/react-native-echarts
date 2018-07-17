@@ -1,6 +1,6 @@
 {
   "name": "native-echarts",
-  "version": "0.4.2",
+  "version": "4.1.0",
   "description": "echarts for react-native",
   "main": "src/index.js",
   "directories": {
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/somonus/react-native-echarts#readme",
   "dependencies": {
-    "echarts": "4.0.4"
+    "echarts": "4.1.0"
   }
 }
